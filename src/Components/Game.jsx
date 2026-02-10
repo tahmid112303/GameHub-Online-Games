@@ -1,21 +1,33 @@
 import React from 'react';
+import Star from '../assets/star.webp'
+import { useNavigate } from 'react-router';
 
 const Game = ({game}) => {
+
+    const {id,coverPhoto,title,ratings,category}=game
+    const navigate=useNavigate()
+
     return (
-<div className="card bg-base-100 w-96 shadow-sm">
+   <div onClick={()=>navigate(`/gameDetails/${id}`)} className="card bg-blue-100 w-96 shadow-sm cursor-pointer">
+  
   <figure className="px-10 pt-10">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
-      className="rounded-xl" />
+      src={coverPhoto}
+      className="rounded-xl h-45 w-75" />
   </figure>
   <div className="card-body items-center text-center">
-    <h2 className="card-title">Card Title</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
-    </div>
+    <h2 className="card-title">{title}</h2>
+    <span className='flex items-center gap-2'>
+      <img className='w-8 h-8' src={Star} alt="" />
+      <span className='font-bold text-xl'>{ratings}</span>
+    </span>
   </div>
+
+      <div className='m-auto'>
+      <div className="w-37.5 h-12.5 flex items-center justify-center border-2 border-gray-600 font-bold text-xl mb-4 rounded-2xl bg-orange-200">
+        {category}
+    </div>
+      </div>
 </div>
     );
 };

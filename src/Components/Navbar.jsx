@@ -21,13 +21,13 @@ const Navbar = () => {
   const Links=<>
 
     <NavLink to={'/home'}>Home</NavLink>
-    <NavLink to={'/about'}>About</NavLink>
+    <NavLink to={'/'}>About</NavLink>
     <NavLink to={'/contact'}>Contact Us</NavLink>
     
 
     {!user &&  <>
       <NavLink to={'/login'}>Login</NavLink>
-      <NavLink to={'/'}>Register</NavLink>
+      <NavLink to={'reg'}>Register</NavLink>
     </>}
 
 
@@ -66,7 +66,7 @@ const Navbar = () => {
   <div className="navbar-end flex gap-6">
       {user && <div className='flex items-center gap-2'>
       <span className='font-bold'>Profile</span>
-      <img onClick={()=>navigate('/profile')} className='cursor-pointer rounded-full h-10 w-10' src={profileLogo} />
+      <img onClick={()=>navigate('/profile')} className='cursor-pointer rounded-full h-10 w-10' src={user.photoURL ? user.photoURL : profileLogo} />
       </div>}
 
     <a onClick={handleLogOut} className="btn mr-4 bg-amber-800 text-white">

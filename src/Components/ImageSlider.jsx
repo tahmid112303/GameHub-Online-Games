@@ -34,7 +34,7 @@ const ImageSlider = () => {
   />
 ))}
 
-<div className='text-8xl font-bold text-white text-center relative top-40 z-1'>Explore <span className='text-6xl'>the</span> <br /> Gaming World</div>
+<div className='text-8xl font-bold text-white text-center relative top-30 z-1'>Explore <span className='text-6xl'>the</span> <br /> Gaming World</div>
 
 
 <button
