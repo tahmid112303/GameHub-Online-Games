@@ -13,7 +13,7 @@ const Login = () => {
     const navigate=useNavigate()
     const emailRef=useRef()
 
-    console.log(location);
+    
 
     const handleForgottenPassword=()=>{
         const email=emailRef.current.value;

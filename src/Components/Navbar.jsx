@@ -12,7 +12,7 @@ const Navbar = () => {
     navigate('/login')
     logOutUser()
     .then(()=>{
-      console.log("Signed out");
+      // console.log("Signed out");
     }).catch(error=>{
       console.log(error);
     })
@@ -23,7 +23,6 @@ const Navbar = () => {
     <NavLink to={'/home'}>Home</NavLink>
     <NavLink to={'/'}>About</NavLink>
     <NavLink to={'/contact'}>Contact Us</NavLink>
-    
 
     {!user &&  <>
       <NavLink to={'/login'}>Login</NavLink>
@@ -56,17 +55,17 @@ const Navbar = () => {
       </ul>
     </div> 
     
-    <img className='w-16 h-16 ml-6' src={gameLogo} alt="" />
+    <img className='w-45 h-20 ml-6' src={gameLogo} alt="" />
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 flex gap-4 font-bold text-xl text-purple-700">
+    <ul className="menu menu-horizontal px-1 flex gap-4 font-bold text-2xl text-purple-700">
       {Links}
     </ul>
   </div>
   <div className="navbar-end flex gap-6">
       {user && <div className='flex items-center gap-2'>
-      <span className='font-bold'>Profile</span>
-      <img onClick={()=>navigate('/profile')} className='cursor-pointer rounded-full h-10 w-10' src={user.photoURL ? user.photoURL : profileLogo} />
+      <span className='font-bold'>{user.displayName || 'Profile'}</span>
+      <img onClick={()=>navigate('/profile')} className='cursor-pointer rounded-full h-10 w-10' src={user.photoURL || profileLogo} />
       </div>}
 
     <a onClick={handleLogOut} className="btn mr-4 bg-amber-800 text-white">

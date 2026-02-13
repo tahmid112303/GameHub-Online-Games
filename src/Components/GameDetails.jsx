@@ -6,7 +6,7 @@ const GameDetails = () => {
 
   const navigate=useNavigate();
   const gameData=useLoaderData()
-  console.log(gameData);
+    
   const {title,coverPhoto,ratings,developer,description}=gameData
 
     return (

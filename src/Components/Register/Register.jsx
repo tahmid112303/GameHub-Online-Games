@@ -1,6 +1,6 @@
 import { Eye, EyeOff } from 'lucide-react';
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext';
 
 const Register = () => {
@@ -9,6 +9,7 @@ const Register = () => {
     const {createUser,emailVerify}=use(AuthContext)
     const [error,setError]=useState('')
     const [success,setSuccess]=useState(false)
+    const navigate=useNavigate()
 
     const handleReg=(e)=>{
         e.preventDefault();
@@ -21,6 +22,7 @@ const Register = () => {
             console.log(result.user);
             setSuccess(true);
             e.target.reset();
+            navigate('/profile')
             emailVerify(result.user)
             .then(()=>alert("Verify your email"))
             .catch(error=>{

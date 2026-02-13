@@ -1,19 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../AuthContext';
 
 const Profile = () => {
     const {updateInfo}=useContext(AuthContext)
+    const [success,setSuccess]=useState(false)
+    const [error,setError]=useState(false)
 
     const handleUpdateInfo = e =>{
         e.preventDefault();
         const name=e.target.name.value;
-        const photoURL=e.target.photoURL.value;
+        const photo=e.target.photoURL.value;
 
-        updateInfo(name,photoURL)
+        setError(false)
+        updateInfo({
+            displayName: name,
+            photoURL: photo
+        })
         .then(()=>{
-            console.log("Data updated");
+            // console.log("Data updated");
+            setSuccess(true)
+            e.target.reset();
         }).catch(error=>{
             console.log(error);
+            setSuccess(false)
+            setError(true)
         })
     }
     return (
@@ -29,6 +39,10 @@ const Profile = () => {
   <input type="url" name='photoURL' className="input" placeholder="https://example.com/photo.jpg" />
 
   <button className="btn btn-info mt-4 font-bold text-white text-[1.3em]">Update Information</button>
+
+  {success && <h1 className='text-green-700 font-bold'>Data updated successfully</h1>}
+
+  {error && <h1 className='text-red-700 font-bold'>An error occured</h1>}
 </fieldset>
             </form>
         </div>
