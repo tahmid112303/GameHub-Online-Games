@@ -68,7 +68,8 @@ const Navbar = () => {
       <img onClick={()=>navigate('/profile')} className='cursor-pointer rounded-full h-10 w-10' src={user.photoURL || profileLogo} />
       </div>}
 
-    <a onClick={handleLogOut} className="btn mr-4 bg-amber-800 text-white">
+    <a onClick={handleLogOut} 
+    className="btn mr-4 bg-sky-800 text-white w-37.5 h-12.5 font-bold text-[1.5em]">
       {user ? 'Sign Out' : 'Sign In'}</a>
   </div>
 </div>
